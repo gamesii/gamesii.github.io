@@ -1,0 +1,96 @@
+[hidden]{display:none!important}
+.game-selection{min-height:100dvh;background:#fafaff;color:#111;font-family:Arial,Helvetica,sans-serif}
+.selection-header{height:112px;display:flex;align-items:center;gap:22px;padding:18px 30px;background:#fff}
+.selection-brand{width:67px;height:55px;object-fit:contain}
+.selection-store{display:flex;align-items:center;justify-content:center;width:156px;height:68px;border-radius:20px 20px 20px 0;background:#ffbe0c;font-size:32px;font-weight:900;transform:skew(-8deg)}
+.selection-games{display:flex;flex-direction:column;gap:36px;max-width:628px;margin:0 auto;padding:28px 24px 36px;box-sizing:content-box}
+.game-card{position:relative;display:block;border-radius:22px;overflow:hidden;box-shadow:0 20px 32px rgba(41,38,110,.07);transition:transform .18s,box-shadow .18s;background:#fff;text-decoration:none}
+.game-card img{display:block;width:100%;height:auto}
+a.game-card:hover{transform:translateY(-4px);box-shadow:0 24px 36px rgba(41,38,110,.14)}
+a.game-card:focus-visible{outline:4px solid #147de1;outline-offset:5px}
+.coming-soon{position:absolute;top:14px;right:14px;padding:7px 10px;background:rgba(0,0,0,.78);color:#fff;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.6px}
+.selection-status{margin:0;text-align:center;font-size:14px;color:#475569}
+@media(min-width:1000px){.selection-games{flex-direction:row;flex-wrap:wrap;max-width:1160px;gap:32px;padding-top:48px}.game-card{width:calc(50% - 16px);align-self:flex-start}.selection-status{width:100%}.selection-header{padding-left:max(30px,calc((100vw - 1160px)/2))}}
+@media(max-width:420px){.selection-header{height:88px;padding:12px 20px;gap:16px}.selection-brand{width:51px;height:42px}.selection-store{width:123px;height:54px;font-size:25px}.selection-games{padding:22px 18px 28px;gap:28px}.game-card{border-radius:16px}.coming-soon{font-size:9px;top:10px;right:10px}}
+
+/* Trim only the supplied artwork's outer canvas; keep the reward label inside. */
+.game-card{background:transparent;box-shadow:none;aspect-ratio:1456/852}
+.game-card img{position:absolute;max-width:none;width:108.93%;height:auto;left:-4.67%;top:-7.98%}
+.game-card-brawl{aspect-ratio:1428/826}
+.game-card-brawl img{width:110.29%;left:-5.53%;top:-9.69%}
+a.game-card:hover{box-shadow:none}
+.selection-status:empty{display:none}
+.selection-footer{background:#000;color:#fff;width:100%;font-family:Arial,Helvetica,sans-serif}
+.selection-footer-inner{max-width:1160px;margin:auto;padding:55px 54px 115px;box-sizing:border-box}
+.footer-locale{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:40px}
+.footer-language{display:flex;align-items:center;gap:14px;border:2px solid #eee;border-radius:7px;padding:10px 14px;min-width:240px;box-sizing:border-box}
+.footer-language svg{width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:1.8;flex-shrink:0}
+.footer-language select{appearance:none;background:transparent;color:#fff;border:0;flex:1;font:inherit;font-size:20px;min-width:0}
+.footer-language option{color:#000;background:#fff}
+.footer-language span{font-size:26px;line-height:1}
+.footer-country{color:#808080;display:flex;align-items:center;gap:14px;font-size:23px}
+.footer-country svg{width:34px;height:34px;fill:currentColor}
+.footer-block{border-top:2px solid #292929;padding:33px 0 40px}
+.footer-block h2{font-size:23px;font-weight:500;margin:0 0 30px}
+.footer-socials{display:flex;flex-wrap:wrap;align-items:center;gap:32px}
+.footer-socials a{display:flex;align-items:center;justify-content:center;width:42px;height:42px}
+.footer-socials img{max-width:100%;max-height:100%;object-fit:contain}
+.footer-downloads{display:flex;align-items:center;gap:32px;flex-wrap:wrap}
+.footer-downloads a{display:block;max-width:46%}
+.footer-downloads img{display:block;max-width:100%;height:auto}
+.footer-policies{border-top:2px solid #292929;padding-top:45px;display:flex;flex-direction:column;align-items:flex-start;gap:20px;font-size:23px}
+.footer-policies a{color:#fff;text-decoration:underline;text-underline-offset:7px}
+.footer-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-top:68px}
+.footer-bottom address{font-style:normal;color:#919191;font-size:23px;line-height:1.6}
+.footer-brand{width:104px;height:auto;filter:invert(1);object-fit:contain}
+.selection-footer a:focus-visible,.footer-language:focus-within{outline:3px solid #ffbe0c;outline-offset:5px}
+@media(max-width:600px){.selection-footer-inner{padding:32px 26px 65px}.footer-locale{padding-bottom:26px;gap:12px}.footer-language{min-width:0;width:53%;padding:8px 10px;gap:9px}.footer-language svg{width:24px;height:24px}.footer-language select{font-size:15px}.footer-country{font-size:16px;gap:7px}.footer-country svg{width:25px;height:25px}.footer-block{padding:23px 0 28px}.footer-block h2{font-size:18px;margin-bottom:24px}.footer-socials{gap:22px}.footer-socials a{width:30px;height:30px}.footer-downloads{gap:18px}.footer-policies{font-size:18px;gap:18px;padding-top:32px}.footer-bottom{margin-top:48px;gap:16px}.footer-bottom address{font-size:16px}.footer-brand{width:75px}}
+
+@media(min-width:1000px){.selection-games{flex-direction:column;flex-wrap:nowrap;max-width:628px}.game-card{width:100%}}
+
+.selection-header{height:86px;padding:14px 24px;gap:16px}
+.selection-brand{width:49px;height:42px}
+.selection-store{width:116px;height:50px;font-size:24px;border-radius:15px 15px 15px 0}
+@media(max-width:600px){.selection-header{height:72px;padding:12px 18px;gap:12px}.selection-brand{width:42px;height:36px}.selection-store{width:96px;height:42px;font-size:20px;border-radius:12px 12px 12px 0}.selection-games{padding-top:18px}}
+.card-caption{position:absolute;left:0;bottom:0;width:52%;height:28%;background:#fff;display:flex;align-items:center;gap:10px;padding:0 6%;box-sizing:border-box;font:600 clamp(11px,2.7vw,20px)/1.25 Arial,sans-serif;color:#111;border-bottom-left-radius:22px;text-align:start;direction:ltr}
+.card-caption>span{min-width:0}
+html[dir=rtl] .footer-block,html[dir=rtl] .footer-policies,html[dir=rtl] .footer-bottom{text-align:right}
+html[dir=rtl] .footer-policies{align-items:flex-start}
+.footer-language{max-width:280px}
+
+/* Mobile header: brand left, login right, separated from the game cards. */
+.selection-header{position:relative;z-index:2;direction:ltr;box-shadow:0 4px 14px rgba(20,25,40,.08)}
+.selection-brand,.selection-store{flex-shrink:0}
+.header-login{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-width:146px;height:52px;padding:0 21px;border:0;border-radius:999px;background:#000;color:#fff;font:700 19px/1 Arial,Helvetica,sans-serif;white-space:nowrap;cursor:pointer;flex-shrink:0}
+.header-login-id{display:inline-flex;align-items:center;justify-content:center;width:32px;height:34px;border-radius:9px;background:#fff;color:#000;font:900 20px/1 Arial,Helvetica,sans-serif}
+.header-login:focus-visible{outline:3px solid #ffbe0c;outline-offset:4px}
+.header-login:hover{background:#202020}
+.header-login:active{transform:scale(.98)}
+.game-card{box-shadow:0 12px 25px rgba(31,40,72,.13),0 3px 7px rgba(31,40,72,.05)}
+a.game-card:hover{box-shadow:0 16px 30px rgba(31,40,72,.18),0 4px 9px rgba(31,40,72,.06)}
+@media(max-width:600px){.header-login{min-width:112px;height:42px;padding:0 12px;gap:7px;font-size:14px}.header-login-id{width:26px;height:28px;border-radius:7px;font-size:17px}.game-card{box-shadow:0 9px 19px rgba(31,40,72,.14),0 2px 5px rgba(31,40,72,.04)}}
+@media(max-width:350px){.selection-header{gap:10px;padding-left:14px;padding-right:14px}.header-login{min-width:105px;font-size:13px;padding:0 9px}}
+
+@media(max-width:600px){.header-login{width:116px;min-width:116px;padding:0 9px}.header-login>span[data-i18n]{min-width:0;white-space:normal;overflow-wrap:anywhere;font-size:12px;line-height:1.15}.header-login-id{flex-shrink:0}html[lang=en] .header-login>span[data-i18n]{font-size:14px}}
+@media(max-width:350px){.header-login{width:108px;min-width:108px}}
+
+.selection-games{align-items:center}
+.game-card{width:92%;align-self:center}
+.game-download-section{background:#fff;color:#191919;text-align:center;padding:45px 22px 65px;font-family:Arial,Helvetica,sans-serif}
+.game-download-section h2{font-size:clamp(22px,4.8vw,34px);font-weight:800;line-height:1.25;margin:0 0 38px}
+.download-game-icons{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:45px}
+.download-icon-row{display:flex;justify-content:center;gap:10px}
+.download-game-icon{--icon-size:80px;width:var(--icon-size);height:var(--icon-size);display:block;border-radius:20%;background-image:url('/assets/game-download-reference.png');background-repeat:no-repeat;background-size:calc(var(--icon-size)*7.44898) calc(var(--icon-size)*6.95918)}
+.download-brawl{background-position:calc(var(--icon-size)*-2.15306) calc(var(--icon-size)*-2.01020)}
+.download-clans{background-position:calc(var(--icon-size)*-3.30612) calc(var(--icon-size)*-2.01020)}
+.download-royale{background-position:calc(var(--icon-size)*-4.43878) calc(var(--icon-size)*-2.01020)}
+.download-hayday{background-position:calc(var(--icon-size)*-2.72449) calc(var(--icon-size)*-3.14286)}
+.download-boom{background-position:calc(var(--icon-size)*-3.86735) calc(var(--icon-size)*-3.14286)}
+.game-download-buttons{display:flex;justify-content:center;align-items:center;gap:13px;max-width:460px;margin:0 auto;direction:ltr}
+.game-download-buttons a{display:block;flex:1;min-width:0;border-radius:9px;overflow:hidden}
+.game-appstore-badge,.game-googleplay-badge{display:block;background-image:url('/assets/game-download-reference.png');background-repeat:no-repeat;width:100%}
+.game-appstore-badge{aspect-ratio:218/73;background-size:334.862% 934.247%;background-position:26.172% 78.161%}
+.game-googleplay-badge{aspect-ratio:245/73;background-size:297.959% 934.247%;background-position:75.67% 78.161%}
+.game-download-buttons a:focus-visible{outline:3px solid #ffbe0c;outline-offset:4px}
+@media(min-width:1000px){.selection-games{max-width:560px}.game-card{width:100%}}
+@media(max-width:600px){.game-download-section{padding:35px 24px 48px}.game-download-section h2{margin-bottom:28px}.download-game-icon{--icon-size:62px}.download-game-icons{gap:8px;margin-bottom:33px}.download-icon-row{gap:8px}.game-download-buttons{max-width:340px;gap:10px}}

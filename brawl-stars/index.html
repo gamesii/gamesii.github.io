@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7KMZPBMNBH"></script>
+<script src="/assets/analytics.js?v=ga-7kmzpbmnbh-20261105" defer></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brawl Stars Rewards</title>
+  <link rel="icon" type="image/webp" href="images/logo-outlined-no-BG.webp">
+  <meta name="description" content="Discover and claim 100% free Brawlers, Drops, Boxes and rewards. Zero cost, no credit card required, instant community rewards!">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css?v=20260921g">
+   <!-- Google tag (gtag.js) -->
+    
+    <!-- Google tag (gtag.js) -->
+   
+    <!-- notification -->
+
+     <!-- notification -->
+</head>
+<body class="min-h-screen text-gray-800 font-sans antialiased selection:bg-sky-200 relative overflow-x-hidden">
+
+  <!-- Floating coins (locker style) -->
+  <div class="bg-decor" aria-hidden="true">
+    <img class="coin" src="images/icon_nano.webp" alt="" style="left:8%;top:14%;animation-duration:7s;">
+    <img class="coin" src="images/icon_nano.webp" alt="" style="left:84%;top:20%;animation-duration:9s;animation-delay:1s;">
+    <img class="coin" src="images/icon_nano.webp" alt="" style="left:10%;top:74%;animation-duration:8s;animation-delay:2s;">
+    <img class="coin" src="images/icon_nano.webp" alt="" style="left:80%;top:66%;animation-duration:10s;animation-delay:.5s;">
+    <img class="coin" src="images/icon_nano.webp" alt="" style="left:48%;top:6%;animation-duration:8.5s;animation-delay:3s;">
+    <img class="coin" src="images/icon_nano.webp" alt="" style="left:24%;top:40%;animation-duration:9.5s;animation-delay:1.4s;">
+    <img class="coin" src="images/icon_nano.webp" alt="" style="left:70%;top:44%;animation-duration:7.5s;animation-delay:2.6s;">
+  </div>
+
+  <!-- 24H Urgency Countdown Banner -->
+  <div class="bg-gradient-to-r from-red-600 via-amber-600 to-red-600 text-white text-xs sm:text-sm font-bold py-2.5 px-4 text-center shadow-md relative z-40">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+      <span class="bg-white text-red-700 font-black px-2.5 py-0.5 rounded-full text-xs animate-pulse flex items-center gap-1 shadow-sm">
+        <i class="fas fa-fire-alt text-red-600"></i> FLASH 24H OFFER
+      </span>
+      <span class="font-bold">Claim today's <span class="text-cyan-300 font-black uppercase">X15 ULTRA BOX</span> before they're gone!</span>
+      <div class="inline-flex items-center gap-1.5 bg-black/40 px-3 py-1 rounded-xl font-mono font-black text-amber-300 text-sm tracking-wider border border-white/20 shadow-inner">
+        <i class="fas fa-stopwatch text-amber-400"></i>
+        <span id="topTimerDisplay">27:00</span>
+      </div>
+      <span class="text-xs text-amber-100 hidden sm:inline">(Free Claims Closing Soon!)</span>
+    </div>
+  </div>
+
+  <!-- Main Fixed Navigation Bar (Brawl Stars Rewards Header) -->
+  <nav class="bg-white/95 backdrop-blur-md sticky top-0 z-40 shadow-md border-b border-sky-100">
+    <div class="max-w-7xl flex flex-wrap items-center justify-between mx-auto px-4 py-2">
+      
+      <!-- Logo (Exact logo.webp) -->
+      <a href="/" class="flex items-center group" aria-label="Back to game selection">
+        <img src="images/logo.webp" 
+             alt="Brawl Stars Rewards" 
+             class="responsive-logo group-hover:scale-105 transition-transform" 
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <span style="display:none" class="text-2xl font-extrabold bg-gradient-to-r from-sky-500 to-cyan-500 bg-clip-text text-transparent">
+          Brawl Stars Rewards
+        </span>
+      </a>
+
+      <!-- Right Side Actions -->
+      <div class="flex items-center gap-1 md:order-2">
+        <!-- GEMS Balance (mobile, always visible) -->
+        <button onclick="openGemsModal()" class="md:hidden inline-flex items-center gap-1.5 px-3 h-10 rounded-lg bg-amber-50 border border-amber-200 text-amber-700 font-bold text-sm hover:bg-amber-100 transition cursor-pointer">
+          <img src="images/icon_gems.webp" alt="GEMS" class="w-5 h-5">
+          <span data-gems-value="1">0</span>
+        </button>
+        <button onclick="getMoreGEMS()" class="md:hidden inline-flex items-center h-10 px-3.5 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 text-white font-black text-sm shadow-md hover:brightness-110 transition cursor-pointer">
+          <img src="images/icon_gems.webp" alt="GEMS" class="w-5 h-5 mr-1.5">GET MORE
+        </button>
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobileNavToggle" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-gray-600 rounded-lg md:hidden hover:bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-200 transition-all">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+          </svg>
+        </button>  
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-collapse">
+        <ul class="flex flex-col p-4 md:p-0 mt-4 font-semibold border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-4 md:mt-0 md:border-0 md:bg-transparent">
+          <li>
+            <a href="#home" class="nav-link active text-sky-500 flex items-center py-2 px-3 rounded-lg hover:bg-sky-50 md:hover:bg-transparent md:hover:text-sky-500 md:p-2">
+              <i class="fa-solid fa-house mr-2"></i>Home
+            </a>
+          </li>
+          <li>
+            <a href="#shop" class="nav-link text-gray-700 flex items-center py-2 px-3 rounded-lg hover:bg-sky-50 md:hover:bg-transparent md:hover:text-sky-500 md:p-2">
+              <i class="fa-solid fa-gift mr-2"></i>Rewards
+            </a>
+          </li>
+          <li class="flex items-center gap-1">
+            <button onclick="openGemsModal()" class="flex items-center gap-1.5 py-2 px-3 rounded-lg text-amber-700 hover:bg-amber-50 md:hover:bg-transparent md:hover:text-amber-600 md:p-2 font-bold cursor-pointer">
+              <img src="images/icon_gems.webp" alt="GEMS" class="w-5 h-5">
+              <span data-gems-value="1">0</span>
+            </button>
+            <button onclick="getMoreGEMS()" class="flex items-center px-2.5 py-1.5 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 text-white font-black text-[11px] shadow-md hover:brightness-110 transition cursor-pointer">
+              <img src="images/icon_gems.webp" alt="GEMS" class="w-5 h-5 mr-1">GET MORE
+            </button>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileNavMenu" class="hidden md:hidden px-4 pb-4 border-t border-gray-100 space-y-2">
+      <a href="#home" class="block px-3 py-2 rounded-xl text-sky-600 font-bold hover:bg-sky-50">
+        <i class="fa-solid fa-house mr-2"></i>Home
+      </a>
+      <a href="#shop" class="block px-3 py-2 rounded-xl text-gray-700 font-bold hover:bg-sky-50">
+        <i class="fa-solid fa-gift mr-2"></i>Rewards
+      </a>
+      <button onclick="openGemsModal()" class="block w-full text-left px-3 py-2 rounded-xl text-amber-700 font-bold hover:bg-amber-50 cursor-pointer">
+        <img src="images/icon_gems.webp" alt="GEMS" class="w-5 h-5 mr-2">GEMS
+        <span data-gems-value="1" class="float-right font-black text-amber-500">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative overflow-hidden pt-14 pb-16 lg:pt-20 lg:pb-24 text-center">
+    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <img src="images/logo.webp" alt="Brawl Stars Rewards" class="mx-auto w-56 sm:w-72 lg:w-80 mb-8 drop-shadow-xl"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div style="display:none" class="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-sky-500 to-cyan-500 bg-clip-text text-transparent">
+        Brawl Stars Rewards
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight">
+        Claim Drops &amp; Boxs and Unlock Brawlers
+      </h1>
+
+      <!-- Players claiming now: featured items -->
+      <div class="mt-8 max-w-3xl mx-auto">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-sky-200 shadow-md backdrop-blur mb-5">
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+          </span>
+          <span class="text-xs sm:text-sm font-bold text-gray-700">Players claiming right now</span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          <!-- X5 Coffin Box -->
+          <div class="bg-white rounded-2xl border border-sky-100 shadow-lg p-4 text-center hover:-translate-y-1 hover:shadow-xl transition relative">
+            <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-500 text-white border-2 border-emerald-300 shadow-lg animate-pulse z-10">NEW</span>
+            <div class="w-20 h-20 mx-auto mb-3 rounded-xl bg-gradient-to-br from-sky-50 to-cyan-100 flex items-center justify-center p-2">
+              <img src="images/coffin-box.webp" alt="X5 Coffin Box" class="w-full h-full object-contain">
+            </div>
+            <h3 class="font-black text-gray-900 text-sm">X5 COFFIN BOX</h3>
+            <div class="flex items-center justify-center gap-1 mt-1 mb-3">
+              <img src="images/icon_gems.webp" alt="GEMS" class="w-4 h-4">
+              <span class="font-black text-amber-600 text-sm">69</span>
+              <span class="text-[9px] font-extrabold uppercase text-amber-700">GEMS</span>
+            </div>
+            <button onclick="claimItemById('x5-coffin-box')" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-black text-xs py-2 rounded-xl shadow-md transition flex items-center justify-center gap-1 active:scale-95">
+              <i class="fas fa-bolt"></i> CLAIM NOW
+            </button>
+          </div>
+          <!-- x15 Chaos Drops -->
+          <div class="bg-white rounded-2xl border border-sky-100 shadow-lg p-4 text-center hover:-translate-y-1 hover:shadow-xl transition relative">
+            <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-500 text-white border-2 border-amber-300 shadow-lg animate-pulse z-10">HOT DEAL</span>
+            <div class="w-20 h-20 mx-auto mb-3 rounded-xl bg-gradient-to-br from-sky-50 to-cyan-100 flex items-center justify-center p-2">
+              <img src="images/chaos-drop.png" alt="x15 Chaos Drops" class="w-full h-full object-contain">
+            </div>
+            <h3 class="font-black text-gray-900 text-sm">x15 CHAOS DROPS</h3>
+            <div class="flex items-center justify-center gap-1 mt-1 mb-3">
+              <img src="images/icon_gems.webp" alt="GEMS" class="w-4 h-4">
+              <span class="font-black text-amber-600 text-sm">99</span>
+              <span class="text-[9px] font-extrabold uppercase text-amber-700">GEMS</span>
+            </div>
+            <button onclick="claimItemById('x15-chaos-drops')" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-black text-xs py-2 rounded-xl shadow-md transition flex items-center justify-center gap-1 active:scale-95">
+              <i class="fas fa-bolt"></i> CLAIM NOW
+            </button>
+          </div>
+          <!-- X5 ULTRA CHAOS DROPS -->
+          <div class="bg-white rounded-2xl border border-sky-100 shadow-lg p-4 text-center hover:-translate-y-1 hover:shadow-xl transition relative">
+            <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-500 text-white border-2 border-amber-300 shadow-lg animate-pulse z-10">HOT DEAL</span>
+            <div class="w-20 h-20 mx-auto mb-3 rounded-xl bg-gradient-to-br from-sky-50 to-cyan-100 flex items-center justify-center p-2">
+              <img src="images/ultra-chaos-drop.png" alt="X5 ULTRA CHAOS DROPS" class="w-full h-full object-contain">
+            </div>
+            <h3 class="font-black text-gray-900 text-sm">X5 ULTRA CHAOS DROPS</h3>
+            <div class="flex items-center justify-center gap-1 mt-1 mb-3">
+              <img src="images/icon_gems.webp" alt="GEMS" class="w-4 h-4">
+              <span class="font-black text-amber-600 text-sm">99</span>
+              <span class="text-[9px] font-extrabold uppercase text-amber-700">GEMS</span>
+            </div>
+            <button onclick="claimItemById('x5-ultra-chaos-drops')" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-black text-xs py-2 rounded-xl shadow-md transition flex items-center justify-center gap-1 active:scale-95">
+              <i class="fas fa-bolt"></i> CLAIM NOW
+            </button>
+          </div>
+          <!-- X5 VINCE BOX -->
+          <div class="bg-white rounded-2xl border border-sky-100 shadow-lg p-4 text-center hover:-translate-y-1 hover:shadow-xl transition relative">
+            <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-500 text-white border-2 border-amber-300 shadow-lg animate-pulse z-10">HOT DEAL</span>
+            <div class="w-20 h-20 mx-auto mb-3 rounded-xl bg-gradient-to-br from-sky-50 to-cyan-100 flex items-center justify-center p-2">
+              <img src="images/vince-box.png" alt="X5 VINCE BOX" class="w-full h-full object-contain">
+            </div>
+            <h3 class="font-black text-gray-900 text-sm">X5 VINCE BOX</h3>
+            <div class="flex items-center justify-center gap-1 mt-1 mb-3">
+              <img src="images/icon_gems.webp" alt="GEMS" class="w-4 h-4">
+              <span class="font-black text-amber-600 text-sm">99</span>
+              <span class="text-[9px] font-extrabold uppercase text-amber-700">GEMS</span>
+            </div>
+            <button onclick="claimItemById('x5-vince-box')" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-black text-xs py-2 rounded-xl shadow-md transition flex items-center justify-center gap-1 active:scale-95">
+              <i class="fas fa-bolt"></i> CLAIM NOW
+            </button>
+          </div>
+          <!-- Cosmo Box -->
+          <div class="bg-white rounded-2xl border border-sky-100 shadow-lg p-4 text-center hover:-translate-y-1 hover:shadow-xl transition relative">
+            <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-500 text-white border-2 border-amber-300 shadow-lg animate-pulse z-10">HOT DEAL</span>
+            <div class="w-20 h-20 mx-auto mb-3 rounded-xl bg-gradient-to-br from-sky-50 to-cyan-100 flex items-center justify-center p-2">
+              <img src="images/ultra-box.webp" alt="X15 Ultra Box" class="w-full h-full object-contain">
+            </div>
+            <h3 class="font-black text-gray-900 text-sm">X15 ULTRA BOX</h3>
+            <div class="flex items-center justify-center gap-1 mt-1 mb-3">
+              <img src="images/icon_gems.webp" alt="GEMS" class="w-4 h-4">
+              <span class="font-black text-amber-600 text-sm">60</span>
+              <span class="text-[9px] font-extrabold uppercase text-amber-700">GEMS</span>
+            </div>
+            <button onclick="claimItemById('x15-ultra-box')" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-black text-xs py-2 rounded-xl shadow-md transition flex items-center justify-center gap-1 active:scale-95">
+              <i class="fas fa-bolt"></i> CLAIM NOW
+            </button>
+          </div>
+          <!-- Sirius Brawler -->
+          <div class="bg-white rounded-2xl border border-sky-100 shadow-lg p-4 text-center hover:-translate-y-1 hover:shadow-xl transition relative">
+            <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-500 text-white border-2 border-emerald-300 shadow-lg animate-pulse z-10">PREMIUM</span>
+            <div class="w-20 h-20 mx-auto mb-3 rounded-xl bg-gradient-to-br from-sky-50 to-cyan-100 flex items-center justify-center p-2">
+              <img src="images/Sirius-Skin-Default.webp" alt="Sirius Brawler" class="w-full h-full object-contain">
+            </div>
+            <h3 class="font-black text-gray-900 text-sm">SIRIUS BRAWLER</h3>
+            <div class="flex items-center justify-center gap-1 mt-1 mb-3">
+              <img src="images/icon_gems.webp" alt="GEMS" class="w-4 h-4">
+              <span class="font-black text-amber-600 text-sm">99</span>
+              <span class="text-[9px] font-extrabold uppercase text-amber-700">GEMS</span>
+            </div>
+            <button onclick="claimItemById('sirius-brawler')" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-black text-xs py-2 rounded-xl shadow-md transition flex items-center justify-center gap-1 active:scale-95">
+              <i class="fas fa-bolt"></i> CLAIM NOW
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Store Catalog Section -->
+  <section id="shop" class="py-16 bg-white/60 border-t border-sky-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <h2 class="text-3xl sm:text-4xl font-black text-gray-900 mb-3">
+          Explore All <span class="text-sky-600">Free Items</span>
+        </h2>
+        <p class="text-gray-600 text-sm sm:text-base">
+          Choose any brawler, box, or drops below and claim it for $0.00. Pick as many as you want and claim them instantly!
+        </p>
+      </div>
+
+      <!-- Search & Category Filters -->
+      <div class="flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-3 mb-8">
+        <!-- Category Buttons -->
+        <div class="flex items-center gap-2 overflow-x-auto md:flex-wrap md:overflow-visible md:justify-center xl:justify-start w-full xl:w-auto pb-1 md:pb-0 -mx-4 px-4 xl:mx-0 xl:px-0">
+          <button data-category="all" class="cat-btn px-5 py-2.5 rounded-xl font-extrabold text-sm transition bg-gradient-to-r from-sky-500 to-cyan-500 text-white shadow-md">
+            All Items
+          </button>
+          <button data-category="brawlers" class="cat-btn px-5 py-2.5 rounded-xl font-bold text-sm text-gray-600 hover:bg-sky-50 transition bg-white border border-gray-200">
+            Brawlers
+          </button>
+          <button data-category="boxes" class="cat-btn px-5 py-2.5 rounded-xl font-bold text-sm text-gray-600 hover:bg-sky-50 transition bg-white border border-gray-200">
+            Boxes
+          </button>
+          <button data-category="drops" class="cat-btn px-5 py-2.5 rounded-xl font-bold text-sm text-gray-600 hover:bg-sky-50 transition bg-white border border-gray-200">
+            Drops
+          </button>
+          <button data-category="skins" class="cat-btn px-5 py-2.5 rounded-xl font-bold text-sm text-gray-600 hover:bg-sky-50 transition bg-white border border-gray-200">
+            Skins
+          </button>
+          <button data-category="coins gems" class="cat-btn px-5 py-2.5 rounded-xl font-bold text-sm text-gray-600 hover:bg-sky-50 transition bg-white border border-gray-200">
+            Coins & Gems
+          </button>
+          <button data-category="pins" class="cat-btn px-5 py-2.5 rounded-xl font-bold text-sm text-gray-600 hover:bg-sky-50 transition bg-white border border-gray-200">
+            <i class="fas fa-face-smile mr-1.5"></i>Pins
+          </button>
+        </div>
+
+        <!-- View Toggle + Search -->
+        <div class="flex items-center gap-2 w-full xl:w-auto shrink-0">
+          <div class="view-toggle shrink-0">
+            <button type="button" onclick="setViewMode('grid')" id="gridViewBtn" class="view-btn active" title="Grid view">
+              <i class="fas fa-th-large"></i><span class="hidden sm:inline">Grid</span>
+            </button>
+            <button type="button" onclick="setViewMode('list')" id="listViewBtn" class="view-btn" title="List view">
+              <i class="fas fa-list"></i><span class="hidden sm:inline">List</span>
+            </button>
+          </div>
+          <div class="relative flex-1 xl:w-72">
+            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+            <input id="searchInput" type="text" placeholder="Search eggs, pets..." 
+                   class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white border border-gray-200 text-sm focus:border-sky-500 transition">
+          </div>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <!-- Rendered via app.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Why Everything is Free Section -->
+  <section id="why-free" class="py-16 bg-gradient-to-br from-sky-500 via-cyan-600 to-sky-700 text-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-black uppercase tracking-wider mb-3">
+          100% Transparent
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black mb-4">
+          Why Is Everything 100% Free?
+        </h2>
+        <p class="text-sky-100 text-base leading-relaxed">
+          BrawlerZone was created as a community giveaway and fan rewards platform. We believe games should be about having fun, not spending real money on virtual items.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white/10 backdrop-blur-md p-6 rounded-3xl border border-white/15">
+          <div class="w-12 h-12 rounded-2xl bg-amber-400 text-amber-950 flex items-center justify-center text-xl font-black mb-4">
+            <i class="fas fa-hand-holding-heart"></i>
+          </div>
+          <h3 class="text-xl font-extrabold mb-2">Zero Paywalls</h3>
+          <p class="text-sky-100 text-sm leading-relaxed">
+            Every item in our shop is priced at \$0.00. We do not ask for credit cards, PayPal, Robux, or any payment method whatsoever.
+          </p>
+        </div>
+
+        <div class="bg-white/10 backdrop-blur-md p-6 rounded-3xl border border-white/15">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-400 text-emerald-950 flex items-center justify-center text-xl font-black mb-4">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3 class="text-xl font-extrabold mb-2">Safe & Account Friendly</h3>
+          <p class="text-sky-100 text-sm leading-relaxed">
+            We only require your public player username for item claim codes. We will NEVER ask for passwords, pins, or security codes.
+          </p>
+        </div>
+
+        <div class="bg-white/10 backdrop-blur-md p-6 rounded-3xl border border-white/15">
+          <div class="w-12 h-12 rounded-2xl bg-cyan-400 text-cyan-950 flex items-center justify-center text-xl font-black mb-4">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3 class="text-xl font-extrabold mb-2">Community Driven</h3>
+          <p class="text-sky-100 text-sm leading-relaxed">
+            Maintained by passionate community members for fellow gamers. Share free items with your friends and level up together!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <h2 class="text-3xl sm:text-4xl font-black text-gray-900 mb-3">
+          How To Claim Your Free Items
+        </h2>
+        <p class="text-gray-600 text-sm sm:text-base">
+          Three simple steps to claim any Items into your inventory.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+        <!-- Step 1 -->
+        <div class="p-8 rounded-3xl bg-sky-50/70 border border-sky-100 text-center relative group hover:border-sky-300 transition">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-r from-sky-500 to-cyan-500 text-white text-2xl font-black flex items-center justify-center mx-auto mb-6 shadow-lg shadow-sky-500/20 group-hover:scale-110 transition-transform">
+            1
+          </div>
+          <h3 class="text-xl font-extrabold text-gray-900 mb-2">Choose Free Items</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Browse our catalog, pick your favorite box or drop, and click "CLAIM NOW" to start the instant claim process.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="p-8 rounded-3xl bg-sky-50/70 border border-sky-100 text-center relative group hover:border-sky-300 transition">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-r from-amber-400 to-orange-500 text-white text-2xl font-black flex items-center justify-center mx-auto mb-6 shadow-lg shadow-amber-500/20 group-hover:scale-110 transition-transform">
+            2
+          </div>
+          <h3 class="text-xl font-extrabold text-gray-900 mb-2">Enter Username</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            In the claim wizard, enter your public player username so the distribution bot knows where to assign your free rewards.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="p-8 rounded-3xl bg-sky-50/70 border border-sky-100 text-center relative group hover:border-sky-300 transition">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-2xl font-black flex items-center justify-center mx-auto mb-6 shadow-lg shadow-emerald-500/20 group-hover:scale-110 transition-transform">
+            3
+          </div>
+          <h3 class="text-xl font-extrabold text-gray-900 mb-2">Receive Claim Ticket</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Get your instant confirmation claim code! Join the trade hub or claim server to receive your items directly.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-16 bg-sky-50/50 border-t border-sky-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-black text-gray-900 mb-3">Frequently Asked Questions</h2>
+        <p class="text-gray-600 text-sm">Everything you need to know about our free items catalog.</p>
+      </div>
+
+      <div class="space-y-4">
+        <details class="group bg-white p-5 rounded-2xl border border-sky-100 shadow-sm transition">
+          <summary class="font-extrabold text-gray-900 flex justify-between items-center cursor-pointer list-none">
+            <span>Is every item really 100% free?</span>
+            <i class="fas fa-chevron-down text-sky-500 group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <p class="text-sm text-gray-600 mt-3 pt-3 border-t border-gray-100 leading-relaxed">
+            Yes, 100%! All eggs, pets, and boosters in our shop are \$0.00. We do not charge money or ask for any payment info.
+          </p>
+        </details>
+
+        <details class="group bg-white p-5 rounded-2xl border border-sky-100 shadow-sm transition">
+          <summary class="font-extrabold text-gray-900 flex justify-between items-center cursor-pointer list-none">
+            <span>Do I need to give my account password?</span>
+            <i class="fas fa-chevron-down text-sky-500 group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <p class="text-sm text-gray-600 mt-3 pt-3 border-t border-gray-100 leading-relaxed">
+            Never! We only ask for your public player username. Always keep your passwords private and safe.
+          </p>
+        </details>
+
+        <details class="group bg-white p-5 rounded-2xl border border-sky-100 shadow-sm transition">
+          <summary class="font-extrabold text-gray-900 flex justify-between items-center cursor-pointer list-none">
+            <span>How many free items can I claim?</span>
+            <i class="fas fa-chevron-down text-sky-500 group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <p class="text-sm text-gray-600 mt-3 pt-3 border-t border-gray-100 leading-relaxed">
+            You can claim any combination of free items instantly â€” no limits, no payment ever.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Detail Modal -->
+  <div id="productModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-start sm:items-center justify-center overflow-y-auto p-4 z-50">
+    <div class="animatePop my-auto bg-white rounded-3xl shadow-2xl max-w-2xl w-full p-6 sm:p-8 relative border border-sky-100">
+      <button onclick="closeProductModal()" class="absolute top-1 right-1 w-12 h-12 p-0 bg-transparent hover:scale-110 transition flex items-center justify-center cursor-pointer">
+        <img src="images/Btn_Close.png" alt="Close" class="w-full h-full object-contain">
+      </button>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
+        <!-- SVG Image container -->
+        <div id="modalImageContainer" class="aspect-square bg-gradient-to-br from-sky-50 to-cyan-50 rounded-2xl flex items-center justify-center p-6 border border-sky-100">
+        </div>
+
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span id="modalCategory" class="px-2.5 py-0.5 rounded-full text-xs font-black bg-sky-100 text-sky-700"></span>
+            <span id="modalRarity" class="px-2.5 py-0.5 rounded-full text-xs font-black bg-amber-100 text-amber-700"></span>
+          </div>
+
+          <h3 id="modalTitle" class="text-2xl font-black text-gray-900 mb-2"></h3>
+          <p id="modalStock" class="text-xs font-bold text-emerald-600 mb-4"></p>
+          <p id="modalDescription" class="text-sm text-gray-600 mb-6 leading-relaxed"></p>
+
+          <!-- 24H Urgency Timer Widget inside Product Modal -->
+          <div class="bg-gradient-to-r from-amber-500/15 via-red-500/10 to-amber-500/15 border-2 border-amber-400 rounded-2xl p-3 mb-4 flex items-center justify-between shadow-sm">
+            <div class="flex items-center gap-2.5">
+              <span class="w-8 h-8 rounded-xl bg-gradient-to-br from-amber-500 to-red-500 text-white flex items-center justify-center shadow-md animate-bounce">
+                <i class="fas fa-hourglass-half text-sm"></i>
+              </span>
+              <div>
+                <div class="text-xs font-black text-gray-900 flex items-center gap-1.5">
+                  <span>OFFRE 24H SEULEMENT</span>
+                  <span class="text-[9px] bg-red-100 text-red-700 font-black px-1.5 py-0.5 rounded">RAK M3ATTAL</span>
+                </div>
+                <div class="text-[11px] text-gray-600 font-semibold">Free claim expires in:</div>
+              </div>
+            </div>
+            <div class="text-right">
+              <span id="modalTimerDisplay" class="font-mono font-black text-base text-red-600 bg-white px-2.5 py-1 rounded-xl shadow-sm border border-red-200 block">
+                27:00
+              </span>
+            </div>
+          </div>
+
+          <div class="flex items-baseline gap-2 mb-6">
+            <i class="fas fa-coins text-amber-500"></i>
+            <span id="modalCreditsCost" class="text-3xl font-black text-amber-600">40</span>
+            <span class="text-xs font-extrabold uppercase px-2 py-0.5 rounded bg-amber-100 text-amber-700">GEMS</span>
+            <span id="modalOldPrice" class="text-xs line-through text-gray-400"></span>
+          </div>
+
+          <button onclick="claimFromModal()" class="btn-glow-subtle w-full bg-gradient-to-r from-sky-500 via-cyan-500 to-sky-500 hover:from-sky-600 hover:to-cyan-600 text-white font-black py-4 px-6 rounded-2xl shadow-lg transition transform active:scale-95 flex items-center justify-center gap-2.5 text-base cursor-pointer tracking-wide">
+            <i class="fas fa-bolt text-amber-300"></i>
+            <span>Claim Now</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GEMS Modal -->
+  <div id="gemsModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-start sm:items-center justify-center overflow-y-auto p-4 z-50">
+    <div class="animatePop my-auto bg-white rounded-3xl shadow-2xl max-w-sm w-full p-6 sm:p-8 relative border border-amber-100">
+      <button onclick="closeGemsModal()" class="absolute top-1 right-1 w-12 h-12 p-0 bg-transparent hover:scale-110 transition flex items-center justify-center cursor-pointer">
+        <img src="images/Btn_Close.png" alt="Close" class="w-full h-full object-contain">
+      </button>
+      <div class="flex flex-col items-center text-center">
+        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-yellow-500 flex items-center justify-center shadow-lg mb-4">
+          <img src="images/icon_gems.webp" alt="GEMS" class="w-8 h-8">
+        </div>
+        <h3 class="text-lg font-black text-gray-900">Your GEMS</h3>
+        <div class="flex items-center gap-2 my-3">
+          <span data-gems-value="1" class="text-5xl font-black text-amber-600">0</span>
+          <span class="text-sm font-extrabold uppercase text-amber-400">GEMS</span>
+        </div>
+        <p class="text-xs text-gray-500 font-semibold mb-5 leading-relaxed">Each claim requires GEMS. Get more to keep unlocking your favorite items.</p>
+        <button onclick="closeGemsModal();openGemsInfo()" class="w-full bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-white font-black py-3 px-6 rounded-2xl shadow-lg transition active:scale-95 flex items-center justify-center gap-2 cursor-pointer">
+          <img src="images/icon_gems.webp" alt="GEMS" class="w-5 h-5 mr-1.5">Get More GEMS
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Multi-Step Free Claim Wizard Modal -->
+  <div id="claimWizardModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-start sm:items-center justify-center overflow-y-auto p-4 z-50">
+    <div class="animatePop bg-white rounded-3xl shadow-2xl max-w-lg w-full p-5 sm:p-8 relative border border-sky-100 overflow-hidden my-auto">
+      <!-- Close Button -->
+      <button onclick="closeClaimWizard()" class="absolute top-1 right-1 w-12 h-12 p-0 bg-transparent hover:scale-110 transition flex items-center justify-center cursor-pointer">
+        <img src="images/Btn_Close.png" alt="Close" class="w-full h-full object-contain">
+      </button>
+
+      <!-- Step Indicator Header -->
+      <div class="flex items-center justify-between mb-6 pb-4 border-b border-gray-100">
+        <div class="flex items-center gap-2">
+          <span class="w-7 h-7 rounded-full bg-sky-500 text-white font-black text-xs flex items-center justify-center" id="wizardStepNum">1</span>
+          <span class="font-extrabold text-sm text-gray-900" id="wizardStepTitle">Player Information</span>
+        </div>
+        <div class="flex gap-1.5">
+          <span class="w-6 h-1.5 rounded-full bg-sky-500 transition-all" id="stepBar1"></span>
+          <span class="w-6 h-1.5 rounded-full bg-gray-200 transition-all" id="stepBar2"></span>
+          <span class="w-6 h-1.5 rounded-full bg-gray-200 transition-all" id="stepBar3"></span>
+        </div>
+      </div>
+
+      <!-- STEP 1: Enter Username & Select Platform -->
+      <div id="wizardStep1" class="space-y-5">
+        <!-- Item Preview Header -->
+        <div class="flex items-center gap-3 p-3 bg-sky-50/70 rounded-2xl border border-sky-100">
+          <div class="w-14 h-14 bg-white rounded-xl p-1.5 flex items-center justify-center flex-shrink-0 border border-sky-100" id="wizardItemImgWrap">
+            <!-- Injected by JS -->
+          </div>
+          <div class="flex-1 min-w-0">
+            <h4 class="text-sm font-black text-gray-900 truncate" id="wizardItemName">Free In-Game Item</h4>
+            <div class="flex items-center gap-2 mt-0.5">
+              <span id="wizardItemCost" class="inline-flex items-center gap-1 text-xs font-black text-amber-600"><img src="images/icon_gems.webp" alt="GEMS" class="w-3.5 h-3.5"><span>40 GEMS</span></span>
+              <span class="text-[10px] uppercase font-extrabold px-1.5 py-0.5 rounded bg-amber-100 text-amber-800">24H Claim</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Username Input -->
+        <div>
+          <label class="block text-xs font-black uppercase tracking-wider text-gray-700 mb-1.5">
+            Brawl stars Username / PlayerTag
+          </label>
+          <div class="relative">
+            <i class="fas fa-user absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+            <input id="wizardUsernameInput" type="text" placeholder="Enter your Brawl Stars player tag..." 
+                   class="w-full pl-11 pr-4 py-3.5 rounded-2xl border-2 border-gray-200 text-sm focus:border-sky-500 font-semibold transition">
+          </div>
+          <p class="text-[11px] text-gray-400 mt-1">Used to assign your free in-game package.</p>
+        </div>
+
+        <!-- Device Selection -->
+        <div>
+          <label class="block text-xs font-black uppercase tracking-wider text-gray-700 mb-2">
+            Select Your Device
+          </label>
+          <div class="grid grid-cols-2 gap-2" id="platformOptions">
+            <button type="button" onclick="selectPlatform('ios')" class="platform-btn p-3 rounded-2xl border-2 border-sky-500 bg-sky-50 text-sky-700 text-xs font-extrabold flex flex-col items-center gap-1.5 transition" data-platform="ios">
+              <i class="fab fa-apple text-lg"></i>
+              <span>iOS</span>
+            </button>
+            <button type="button" onclick="selectPlatform('android')" class="platform-btn p-3 rounded-2xl border-2 border-gray-200 bg-white text-gray-600 text-xs font-bold flex flex-col items-center gap-1.5 transition hover:bg-gray-50" data-platform="android">
+              <i class="fab fa-android text-lg"></i>
+              <span>Android</span>
+            </button>
+          </div>
+        </div>
+
+        <button type="button" onclick="startGenerationProcess()" class="btn-glow-subtle w-full bg-gradient-to-r from-sky-500 via-cyan-500 to-sky-500 hover:from-sky-600 hover:to-cyan-600 text-white font-black py-4 rounded-2xl shadow-lg transition transform active:scale-95 flex items-center justify-center gap-2 text-base">
+          <i class="fas fa-bolt text-amber-300"></i>
+          <span>Continue to Generate Claim</span>
+        </button>
+      </div>
+
+      <!-- STEP 2: Live Animated Server Connection & Progress -->
+      <div id="wizardStep2" class="hidden py-4 text-center space-y-5">
+        <div id="wizardSelectedItemPreview" class="w-20 h-20 sm:w-24 sm:h-24 mx-auto flex items-center justify-center float-animation"></div>
+
+        <div>
+          <h3 class="text-xl font-black text-gray-900 mb-1" id="wizardStatusHeader">Connecting to Server...</h3>
+          <p class="text-xs text-gray-500" id="wizardStatusSub">Please wait while we prepare your free item package</p>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="w-full bg-gray-100 rounded-full h-3.5 p-0.5 overflow-hidden relative shadow-inner">
+          <div id="wizardProgressBar" class="h-full rounded-full bg-gradient-to-r from-sky-500 via-cyan-400 to-emerald-400 transition-all duration-300 w-0"></div>
+        </div>
+        <div class="flex justify-between text-xs font-extrabold text-gray-500 px-1">
+          <span id="wizardLogText">Initializing handshake...</span>
+          <span id="wizardPercent">0%</span>
+        </div>
+
+        <!-- Animated Status Logs Box -->
+        <div class="p-3.5 bg-gray-900 rounded-2xl text-left font-mono text-[11px] text-green-400 space-y-1.5 h-24 overflow-hidden border border-gray-800" id="wizardLogsBox">
+          <div class="flex items-center gap-2 text-cyan-400">
+            <i class="fas fa-circle-notch fa-spin text-xs"></i>
+            <span>Establishing connection to Brawl Stars network...</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3: Ready & Ticket Generated -->
+      <div id="wizardStep3" class="hidden py-2 text-center space-y-5">
+        <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 text-3xl flex items-center justify-center mx-auto shadow-lg shadow-emerald-500/20 animate-bounce">
+          <i class="fas fa-check"></i>
+        </div>
+
+        <div>
+          <span class="inline-block px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-black uppercase mb-1">Item Ready</span>
+          <h3 class="text-2xl font-black text-gray-900 mb-1">REWARD GENERATED!</h3>
+          <p class="text-xs text-gray-600">
+            Your item is Generated For <strong id="wizardSuccessUser" class="text-sky-600"></strong>
+            <span class="block mt-1 text-[9px] text-gray-400 font-normal">Use the Claim button below to continue.</span>
+          </p>
+        </div>
+
+        <!-- Ticket Box with Claim -->
+        <div class="p-4 bg-sky-50 rounded-2xl border-2 border-dashed border-sky-300 relative group">
+          <!-- Dark Image + Centered Claim Overlay -->
+          <div class="relative aspect-square rounded-2xl bg-white border border-gray-200 flex items-center justify-center overflow-hidden">
+            <div id="wizardItemImgWrap3" class="w-full h-full flex items-center justify-center">
+              <!-- Injected by JS -->
+            </div>
+            <div id="wizardClaimPop" class="claim-pop hidden">
+              <span class="text-white/70 text-[10px] font-bold uppercase">Unlock</span>
+              <button type="button" onclick="payForClaim()" class="flex items-center gap-1.5 pl-3 pr-4 py-1.5 rounded-full bg-gradient-to-r from-emerald-500 to-green-600 text-white font-black text-xs shadow-lg hover:brightness-110 active:scale-95 transition cursor-pointer">
+                <img src="images/icon_gems.webp" alt="GEMS" class="w-5 h-5 text-amber-300">
+                <span id="wizardClaimCostLabel">5</span>
+              </button>
+            </div>
+            <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 p-3">
+              <div id="gemsInsufficient" role="alert" class="hidden w-full max-w-[240px] rounded-xl bg-red-600 text-white text-xs font-bold p-3 shadow-lg text-center z-20" style="line-height:1.4;">
+                Not enough GEMS to unlock this item! Tap Get More GEMS below.
+              </div>
+              <button id="wizardClaimButton" onclick="showClaimPop(this)" class="w-[calc(100%-2rem)] max-w-[240px] bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-black py-3 rounded-xl shadow-xl shadow-orange-900/40 transition transform active:scale-95 flex items-center justify-center gap-2 text-sm z-10">
+                <i class="fas fa-lock"></i>
+                <span>CLAIM</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <button id="getMoreGemsBtn" onclick="getMoreGEMS()" class="hidden w-full btn-glow-subtle bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-black py-4 rounded-2xl shadow-lg transition">
+Get More GEMS
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- How to Get More GEMS Modal - Exact index.php design -->
+  <div id="gemsInfoModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-start sm:items-center justify-center overflow-y-auto p-4 z-50">
+    <div class="animatePop my-auto w-full max-w-md relative">
+      <!-- Floating coins background -->
+      <div class="gems-modal-bg-decor" aria-hidden="true">
+        <span class="coin" style="left:8%;top:14%;animation-duration:7s;">🪙</span>
+        <span class="coin" style="left:84%;top:20%;animation-duration:9s;animation-delay:1s;">🪙</span>
+        <span class="coin" style="left:10%;top:74%;animation-duration:8s;animation-delay:2s;">💰</span>
+        <span class="coin" style="left:80%;top:66%;animation-duration:10s;animation-delay:.5s;">🪙</span>
+        <span class="coin" style="left:48%;top:6%;animation-duration:8.5s;animation-delay:3s;">💰</span>
+        <span class="coin" style="left:24%;top:40%;animation-duration:9.5s;animation-delay:1.4s;font-size:20px;">🪙</span>
+        <span class="coin" style="left:70%;top:44%;animation-duration:7.5s;animation-delay:2.6s;font-size:22px;">💰</span>
+      </div>
+      
+      <!-- Card - exact index.php .card -->
+      <div class="gems-modal-card">
+        <!-- Top gradient bar -->
+        <div class="gems-modal-top-bar"></div>
+        
+        <!-- Header - exact index.php .header -->
+        <div class="gems-modal-header">
+          <div class="gems-modal-coin-badge">
+            <img src="images/Logolocker.webp" alt="Locker">
+          </div>
+          <h1 class="gems-modal-title">Earn Free Gems</h1>
+          <p class="gems-modal-subtext">
+            🔥 Complete just <strong>1 offer</strong> → Get up to 100 <em>Gems</em> instantly! Your Brawl Stars reward unlocks right after 🎁
+          </p>
+          <div class="gems-modal-head-chips">
+            <div class="gems-modal-claim-wrap">
+              <button class="gems-modal-claim-btn" type="button">
+                <span class="lock-ico">🔒</span> Claim 40 <img class="gem-ico" src="images/icon_gems.webp" alt="">
+              </button>
+              <span class="gems-modal-pop">Please Complete just 1 offer to Unlock it</span>
+            </div>
+            <div class="gems-modal-claim-wrap">
+              <button class="gems-modal-claim-btn" type="button">
+                <span class="lock-ico">🔒</span> Claim 60 <img class="gem-ico" src="images/icon_gems.webp" alt="">
+              </button>
+              <span class="gems-modal-pop">Please Complete just 1 offer to Unlock it</span>
+            </div>
+            <div class="gems-modal-claim-wrap">
+              <button class="gems-modal-claim-btn" type="button">
+                <span class="lock-ico">🔒</span> Claim 100 <img class="gem-ico" src="images/icon_gems.webp" alt="">
+              </button>
+              <span class="gems-modal-pop">Please Complete just 1 offer to Unlock it</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Steps Grid - exact index.php .steps-grid -->
+        <div class="px-6 pb-4">
+          <div class="gems-modal-steps-grid">
+            <div class="gems-modal-step-card active">
+              <span class="gems-modal-step-ico">🎯</span>
+              <div class="gems-modal-step-count">STEP 1</div>
+              <div class="gems-modal-step-txt">Choose an offer</div>
+            </div>
+            <div class="gems-modal-step-card">
+              <span class="gems-modal-step-ico">✅</span>
+              <div class="gems-modal-step-count">STEP 2</div>
+              <div class="gems-modal-step-txt">Complete one offer</div>
+            </div>
+            <div class="gems-modal-step-card">
+              <span class="gems-modal-step-ico">🎁</span>
+              <div class="gems-modal-step-count">STEP 3</div>
+              <div class="gems-modal-step-txt">Get Gems</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="locker-video" style="width:calc(100% - 32px);max-width:320px;margin:0 auto 16px;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#111;">
+          <iframe src="https://www.youtube.com/embed/z9z5Pg8W1vk" title="Brawl Stars Gems Tutorial 💎 | How to Complete 1 Offer (Step-by-Step)" width="320" height="180" loading="lazy" style="display:block;width:100%;height:100%;border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <!-- Body / Offers - exact index.php .body -->
+        <div class="gems-modal-body">
+          <div class="gems-modal-waiting" id="gemsModalWaiting" style="display: none;">⏳ Waiting for task completion...</div>
+          
+          <div class="gems-modal-section-label">
+            <span class="gems-modal-section-title">Pick an offer to earn Gems</span>
+          </div>
+          
+          <div id="gemsOffersContainer">
+            <!-- Offers will be loaded dynamically -->
+            <div class="offer-loading flex items-center justify-center gap-2 p-4 text-sm text-gray-500">
+              <i class="fas fa-spinner fa-spin text-sky-500"></i> Loading offers...
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer - exact index.php .footer -->
+        <div class="gems-modal-footer">
+          <span class="gems-modal-footer-item">SSL Secured</span>
+          <div class="gems-modal-footer-dot"></div>
+          <a class="gems-modal-footer-item" href="#">Privacy</a>
+          <div class="gems-modal-footer-dot"></div>
+          <a class="gems-modal-footer-item" href="#">Terms</a>
+          <div class="gems-modal-footer-dot"></div>
+          <a class="gems-modal-footer-item" href="#">Support</a>
+        </div>
+      </div>
+      
+      <!-- Close button overlay - copy Player Information window style -->
+      <button onclick="closeGemsInfo()" class="absolute top-2 right-2 w-12 h-12 p-0 bg-transparent hover:scale-110 transition flex items-center justify-center cursor-pointer">
+        <img src="images/Btn_Close.png" alt="Close" class="w-full h-full object-contain">
+      </button>
+    </div>
+  </div>
+
+  <!-- First Visit Gift Modal -->
+  <div id="giftModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-start sm:items-center justify-center overflow-y-auto p-4 z-[60]">
+    <div class="animatePop my-auto bg-white rounded-3xl shadow-2xl max-w-lg w-full p-6 sm:p-8 relative border border-emerald-100 text-center">
+      <button onclick="closeGiftModal()" class="absolute top-1 right-1 w-12 h-12 p-0 bg-transparent hover:scale-110 transition flex items-center justify-center cursor-pointer">
+        <img src="images/Btn_Close.png" alt="Close" class="w-full h-full object-contain">
+      </button>
+
+      <!-- Gift Box Animation -->
+      <div id="giftBoxContainer" class="relative mx-auto mb-6">
+        <div id="giftBox" class="w-28 h-28 mx-auto relative cursor-pointer">
+          <!-- Box Bottom -->
+          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-28 h-16 bg-gradient-to-b from-emerald-600 to-emerald-700 rounded-b-2xl shadow-[0_8px_32px_rgba(16,185,129,0.4)]"></div>
+          <!-- Box Top (Lid) -->
+          <div id="giftLid" class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-8 bg-gradient-to-b from-emerald-500 to-emerald-600 rounded-t-2xl shadow-[0_4px_16px_rgba(16,185,129,0.3)] transform transition-transform duration-500 origin-bottom"></div>
+          <!-- Ribbon Vertical -->
+          <div class="absolute top-0 bottom-16 left-1/2 -translate-x-1/2 w-4 bg-gradient-to-b from-amber-400 to-yellow-500"></div>
+          <!-- Ribbon Horizontal -->
+          <div class="absolute bottom-16 left-0 right-0 h-4 bg-gradient-to-r from-amber-400 to-yellow-500"></div>
+          <!-- Bow -->
+          <div id="giftBow" class="absolute top-2 left-1/2 -translate-x-1/2 w-10 h-6">
+            <div class="absolute left-0 top-1/2 -translate-y-1/2 w-5 h-5 bg-amber-400 rounded-l-full transform rotate-12"></div>
+            <div class="absolute right-0 top-1/2 -translate-y-1/2 w-5 h-5 bg-amber-400 rounded-r-full transform -rotate-12"></div>
+            <div class="absolute left-1/2 top-0 -translate-x-1/2 w-4 h-4 bg-amber-400 rounded-full"></div>
+          </div>
+        </div>
+        <!-- Particles Container -->
+        <div id="giftParticles" class="absolute inset-0 pointer-events-none"></div>
+      </div>
+
+      <h3 id="giftTitle" class="text-xl font-black text-gray-900 mb-1 opacity-0 translate-y-4 transition-all duration-500">You Received a First Visit Gift!</h3>
+      <p id="giftSubtitle" class="text-sm text-gray-500 font-semibold mb-6 opacity-0 translate-y-4 transition-all duration-500 delay-100">Free GEMS have been added to your account instantly</p>
+
+      <!-- Balance Counter Animation -->
+      <div id="giftBalanceContainer" class="mb-6 p-5 rounded-2xl bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-100 opacity-0 translate-y-4 transition-all duration-500 delay-200">
+        <div class="text-xs font-bold uppercase text-emerald-600 tracking-wider mb-1">Your New Balance</div>
+        <div class="flex items-center justify-center gap-2">
+          <span id="giftBalanceCounter" class="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">0</span>
+          <span class="text-xl font-bold text-emerald-600">GM</span>
+        </div>
+        <div id="giftBalanceProgress" class="mt-3 h-2 bg-emerald-100 rounded-full overflow-hidden">
+          <div class="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- Claimable Items Grid -->
+      <div id="giftItemsContainer" class="opacity-0 translate-y-4 transition-all duration-500 delay-300">
+        <div class="flex items-center justify-between mb-4">
+          <h4 class="text-sm font-bold text-gray-900 uppercase tracking-wider">Items You Can Get Now</h4>
+          <span id="giftItemsCount" class="text-xs text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 rounded-full">0 items</span>
+        </div>
+        <div id="giftItemsGrid" class="grid grid-cols-2 gap-3 max-h-80 overflow-y-auto pr-1">
+          <!-- Items rendered by JS -->
+        </div>
+      </div>
+
+      <button onclick="claimGift()" class="mt-6 w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-black py-3.5 px-6 rounded-2xl shadow-lg transition active:scale-95 flex items-center justify-center gap-2 cursor-pointer">
+        <i class="fas fa-check-circle"></i>
+        <span>Awesome, Start Browsing!</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 max-w-sm"></div>
+
+  <!-- Footer with Clear Legal / Non-Commercial Disclaimer -->
+  <footer class="bg-gray-900 text-gray-300 pt-16 pb-12 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        
+        <!-- Col 1: Brand -->
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-500 to-cyan-400 flex items-center justify-center text-white text-lg">
+              <i class="fas fa-egg"></i>
+            </div>
+            <span class="text-xl font-black text-white">BrawlerZone</span>
+          </div>
+          <p class="text-gray-400 text-sm max-w-md leading-relaxed mb-4">
+            An open community fan project providing free virtual in-game rewards, Boxs, and Brawlers. 100% free of charge with zero paywalls.
+          </p>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-950/80 border border-emerald-600 text-emerald-400 text-xs font-bold">
+            <i class="fas fa-check-circle"></i>
+            <span>All items on this website are permanently free ($0.00).</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation -->
+        <div>
+          <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Navigation</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="#home" class="hover:text-white transition">Home</a></li>
+            <li><a href="#shop" class="hover:text-white transition">Free Item Catalog</a></li>
+            <li><a href="#why-free" class="hover:text-white transition">Why Everything is Free</a></li>
+            <li><a href="#how-it-works" class="hover:text-white transition">How It Works</a></li>
+            <li><a href="#faq" class="hover:text-white transition">FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Community -->
+        <div>
+          <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Community</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="#shop" class="hover:text-white transition">Giveaway Hub</a></li>
+            <li><a href="#home" class="hover:text-white transition">Trade Requests</a></li>
+            <li><a href="#why-free" class="hover:text-white transition">Fair Play Rules</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Legal & Copyright Disclaimer Notice -->
+      <div class="pt-8 border-t border-gray-800 text-xs text-gray-500 text-center leading-relaxed">
+        <p class="mb-2">
+          Â© 2026 Brawl Stars Rewards â€” An independent community project. All items provided on this website are distributed 100% free of charge for non-commercial entertainment purposes.
+        </p>
+        <p>
+          Disclaimer: This website is not affiliated with, endorsed by, or sponsored by Supercell, Brawl Stars, or any of their subsidiaries. All product names, logos, and brands are property of their respective owners.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JS Logic -->
+  
+  <script src="app-claim-notice-0849b82c31.js?v=items-20261105"></script>
+<script type="module" src="/assets/brawl-localization.js?v=auto-20261025"></script>
+</body>
+</html>

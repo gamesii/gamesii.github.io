@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>This site can't be reached</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #fff;
+    color: #202124;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.error-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 110px 25px 40px;
+}
+
+.error-icon {
+    width: 48px;
+    height: 58px;
+    margin-bottom: 60px;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+p {
+    font-size: 12x;
+    color: #5f6368;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.domain {
+    color: #5f6368;
+    font-weight: 500;
+}
+
+a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.error-code {
+    font-size: 10px;
+    color: #5f6368;
+    margin-top: 25px;
+}
+
+button {
+    margin-top: 70px;
+    padding: 11px 21px;
+    background: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1765cc;
+}
+
+@media (max-width: 600px) {
+    .error-container {
+        padding-top: 100px;
+    }
+
+    h1 {
+        font-size: 12px;
+    }
+
+    p {
+        font-size: 8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="error-container">
+
+    <svg class="error-icon"
+         viewBox="0 0 48 58"
+         fill="none"
+         xmlns="http://www.w3.org/2000/svg">
+
+        <path d="M3 2H30L45 17V56H3V2Z"
+              stroke="#5F6368"
+              stroke-width="4"/>
+
+        <path d="M30 2V17H45"
+              stroke="#5F6368"
+              stroke-width="4"/>
+
+        <path d="M15 16V23"
+              stroke="#5F6368"
+              stroke-width="4"/>
+
+        <path d="M13 39H35"
+              stroke="#5F6368"
+              stroke-width="4"/>
+
+        <path d="M15 46L21 42L27 46L33 42"
+              stroke="#5F6368"
+              stroke-width="3"/>
+
+    </svg>
+
+    <h1>This site can’t be reached</h1>
+
+    <p>
+        Check if there is a typo in
+        <span class="domain">superqr1.pages.dev</span>.
+    </p>
+
+    <p>
+        If spelling is correct,
+        <a href="#">try running Windows Network Diagnostics.</a>
+    </p>
+
+    <div class="error-code">
+        DNS_PROBE_FINISHED_NXDOMAIN
+    </div>
+
+    <button onclick="location.reload()">
+        Reload
+    </button>
+
+</div>
+
+</body>
+</html>
